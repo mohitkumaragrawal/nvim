@@ -1,17 +1,29 @@
 return  {
   'ibhagwan/fzf-lua',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
+  config = function()
+    require("fzf-lua").setup({
+      "hide",
+      fzf_colors = true,
+    })
+  end,
+  keymap = {
+    builtin = {
+      ["<C-k>"] = "preview-page-up",
+      ["<C-j>"] = "preview-page-down"
+    }
+  },
   keys = {
     {
       '<leader>ff',
-      function() 
+      function()
         require("fzf-lua").files()
       end,
-      desc = "Search Files" 
+      desc = "Search Files"
     },
     {
       '<leader>fc',
-      function() 
+      function()
         require("fzf-lua").files({ cwd = "~/.config/nvim" })
       end,
       desc = "Search Config"
@@ -29,6 +41,35 @@ return  {
         require('fzf-lua').live_grep()
       end,
       desc = "Start live grep on cwd"
-    }
+    },
+    {
+      '<leader>fo',
+      function()
+        require('fzf-lua').oldfiles()
+      end,
+      desc = "Search recent files."
+    },
+    {
+      '<leader>fr',
+      function()
+        require('fzf-lua').live_grep({cwd = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ':h')})
+      end,
+      desc = "Start live grep in the open file directory"
+    },
+    {
+      '<leader>fg',
+      function()
+        require('fzf-lua').git_commits()
+      end,
+      desc = "Find git commits"
+    },
+    {
+      '<leader><leader>',
+      function()
+        require('fzf-lua').resume()
+      end,
+      desc = "Resume last find"
+    },
+
   },
 }

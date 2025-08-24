@@ -34,7 +34,14 @@ return {
     local colors = require("kanagawa.colors").setup()
 
     -- Make window separators more visible
-    vim.api.nvim_set_hl(0, "VertSplit", { fg = colors.palette.sakuraPink })
-    vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.palette.sakuraPink })
+    vim.api.nvim_set_hl(0, "VertSplit", { fg = colors.palette.oniViolet })
+    vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.palette.oniViolet })
+
+    vim.api.nvim_set_hl(0, "StatusLine", {
+      fg = colors.palette.sumiInk5,
+      bg = colors.palette.oniViolet,
+      bold = true,
+    })
   end,
 }
+
