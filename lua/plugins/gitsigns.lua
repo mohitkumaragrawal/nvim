@@ -31,9 +31,7 @@ return {
       map('n', '<leader>gp', function() gs.nav_hunk('prev') end, 'Prev hunk')
 
       -- Actions on hunks
-      map('n', '<leader>gs', gs.stage_hunk, 'Stage hunk')
       map('n', '<leader>gr', gs.reset_hunk, 'Reset hunk')
-      map('n', '<leader>gu', gs.undo_stage_hunk, 'Unstage hunk')
       map('n', '<leader>gS', gs.stage_buffer, 'Stage buffer')
       map('n', '<leader>gR', gs.reset_buffer, 'Reset buffer')
 

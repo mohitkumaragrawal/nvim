@@ -6,7 +6,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- TODO: Read about breakindent, ignorecase, smartcase
-vim.o.breakindent = true 
+vim.o.breakindent = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
@@ -21,3 +21,4 @@ vim.o.undofile = true
 vim.o.timeoutlen = 500
 vim.o.numberwidth = 4
 vim.o.signcolumn = "yes"
+vim.o.winborder = "single"

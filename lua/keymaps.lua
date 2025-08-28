@@ -1,4 +1,4 @@
-local M= vim.keymap.set
+local M = vim.keymap.set
 
 -- Basic
 M('n', '<leader>nr', '<cmd>source %<cr>', { desc = "Source current buffer" })
@@ -20,6 +20,9 @@ M("n", "<C-a>", 'mzggVG"+y`zzz', { desc = "Copy whole file" })
 M("n", "J", "mzJ`z", { desc = "Merge bottom line" })
 M("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true, desc = "Scroll up" })
 M("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Scroll down" })
+M("n", "<leader>bd", "<cmd>bdelete<cr>", { noremap = true, desc = "Close Buffer" })
+M('n', '<esc><esc>', ':noh<CR>', { silent = true, nowait = true })
+
 
 -- Copy file paths
 M("n", "<leader>xp", function()
@@ -27,4 +30,15 @@ M("n", "<leader>xp", function()
   vim.fn.setreg("+", file_path)
   print("Copied file path: " .. file_path)
 end, { desc = "Copy file path"})
+
+local function toggle_diagnostics_virtual_text()
+  local new_config = not vim.diagnostic.config().virtual_text
+  vim.diagnostic.config({
+    virtual_text = new_config,
+    -- You can also toggle other diagnostic displays here, like signs
+    -- signs = new_config,
+  })
+end
+
+M('n', '<leader>d', toggle_diagnostics_virtual_text, { desc = "Toggle diagnostics" })
 

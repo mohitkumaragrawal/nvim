@@ -3,5 +3,6 @@ return {
   main = "ibl",
   ---@module "ibl"
   ---@type ibl.config
-  opts = {},
+  opts = {
+  },
 }

@@ -3,18 +3,6 @@ return {
   opts = {
     colors = {
       theme = {
-        wave = {
-          ui = {
-            float = {
-              bg = "none",
-            },
-          },
-        },
-        dragon = {
-          syn = {
-            parameter = "yellow",
-          },
-        },
         all = {
           ui = {
             bg_gutter = "none",
@@ -24,24 +12,37 @@ return {
     },
     commentStyle = { italic = false },
     keywordStyle = { italic = false },
+    overrides = function (colors)
+      local theme = colors.theme
+      local makeDiagnosticColor = function(color)
+        local c = require("kanagawa.lib.color")
+        return { fg = color, bg = c(color):blend(theme.ui.bg, 0.95):to_hex() }
+      end
+      return {
+        VertSplit = { fg = colors.palette.oniViolet },
+        WinSeparator = { fg = colors.palette.oniViolet },
+        StatusLine = {
+          fg = colors.palette.sumiInk5,
+          bg = colors.palette.oniViolet,
+          bold = true,
+        },
+        NormalFloat = { bg = "none" },
+        FloatTitle = { bg = "none" },
+        FloatBorder = { bg = "NONE", fg = colors.palette.oniViolet },
+        DiagnosticVirtualTextHint  = makeDiagnosticColor(theme.diag.hint),
+        DiagnosticVirtualTextInfo  = makeDiagnosticColor(theme.diag.info),
+        DiagnosticVirtualTextWarn  = makeDiagnosticColor(theme.diag.warning),
+        DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
+        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency,,
+        PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+        PmenuSbar = { bg = theme.ui.bg_m1 },
+        PmenuThumb = { bg = "#C0A36E" },
+        BlinkCmpMenuBorder = { fg = "", bg = "" },
+        CursorLineNr = { fg = colors.palette.sakuraPink, bg = "NONE" },
+        IblIndent = { fg = colors.palette.sumiInk4, bg = "NONE" },
+      }
+    end,
   },
   lazy = false,
-  config = function(_, opts)
-    require("kanagawa").setup(opts)
-    vim.cmd.colorscheme "kanagawa-wave"
-
-    -- Get the theme's colors
-    local colors = require("kanagawa.colors").setup()
-
-    -- Make window separators more visible
-    vim.api.nvim_set_hl(0, "VertSplit", { fg = colors.palette.oniViolet })
-    vim.api.nvim_set_hl(0, "WinSeparator", { fg = colors.palette.oniViolet })
-
-    vim.api.nvim_set_hl(0, "StatusLine", {
-      fg = colors.palette.sumiInk5,
-      bg = colors.palette.oniViolet,
-      bold = true,
-    })
-  end,
 }
 

@@ -35,7 +35,7 @@ end
 
 return {
   "nvim-tree/nvim-tree.lua",
-  dependencies = { 
+  dependencies = {
     'nvim-tree/nvim-web-devicons',
     'ibhagwan/fzf-lua'
   }, -- Dependency for icons
@@ -70,6 +70,7 @@ return {
     on_attach = function(bufnr)
       local opts = { buffer = bufnr }
       local api = require("nvim-tree.api")
+      local M= vim.keymap.set
       api.config.mappings.default_on_attach(bufnr)
       -- function for left to assign to keybindings
       local lefty = function()
@@ -90,13 +91,13 @@ return {
           api.node.open.edit()
         end
       end
-      vim.keymap.set("n", "h", lefty, opts)
-      vim.keymap.set("n", "<Left>", lefty, opts)
-      vim.keymap.set("n", "<Right>", righty, opts)
-      vim.keymap.set("n", "l", righty, opts)
+      M("n", "h", lefty, opts)
+      M("n", "<Left>", lefty, opts)
+      M("n", "<Right>", righty, opts)
+      M("n", "l", righty, opts)
 
       -- live grep for a directory
-      vim.keymap.set("n", "<leader>fr", function()
+      M("n", "<leader>/", function()
         local node = api.tree.get_node_under_cursor()
         local fzf_lua = require('fzf-lua')
 
@@ -138,8 +139,7 @@ return {
       pattern = "*",
     })
 
-    local augroup = vim.api.nvim_create_augroup("NvimTreeCwd", { clear = true })
-    vim.api.nvim_create_autocmd("VimEnter", {
+    local augroup = vim.api.nvim_create_augroup("NvimTreeCwd", { clear = true }) vim.api.nvim_create_autocmd("VimEnter", {
       group = augroup,
       desc = "Set CWD to directory passed as argument",
       callback = function()
