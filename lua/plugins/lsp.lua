@@ -17,9 +17,27 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
-      local M = vim.keymap.set
-      M("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover doc"})
-      M("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "Hover doc"})
+      require('lspconfig').gopls.setup({
+        settings = {
+          gopls = {
+            directoryFilters = {
+              "-polaris/.buildenv",
+              "-polaris/.cache",
+              "-polaris/node_modules",
+              "-polaris/src/src",
+              "-polaris/src/.ijwb",
+              "-polaris/src/bazel-bin",
+              "-polaris/src/bazel-out",
+              "-polaris/src/bazel-src",
+              "-polaris/src/bazel-testlogs"
+            },
+            codelenses = {
+              generate = false
+            },
+            verboseOutput = true
+          }
+        }
+      })
     end,
   },
   {
@@ -39,5 +57,18 @@ return {
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     }
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+    cmd = "Trouble",
+    keys = {
+      { "<leader>xX", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+      { "<leader>xx", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+      { "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
+      { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+      { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+    },
   }
 }

@@ -20,5 +20,6 @@ return  {
     { '<leader>fg', function() require('fzf-lua').git_commits() end, desc = "Find git commits" },
     { '<leader><leader>', function() require('fzf-lua').resume() end, desc = "Resume last find" },
     { '<leader>fd', function() require('fzf-lua').diagnostics_document() end, desc = "List diagnostics" },
+    { '<leader>fb', function() require("fzf-lua").buffers() end, desc = "Search Buffers" },
   },
 }

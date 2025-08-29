@@ -23,6 +23,9 @@ M("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Scroll down"
 M("n", "<leader>bd", "<cmd>bdelete<cr>", { noremap = true, desc = "Close Buffer" })
 M('n', '<esc><esc>', ':noh<CR>', { silent = true, nowait = true })
 
+M("n", "gd", vim.lsp.buf.definition, {})
+M("n", "gr", vim.lsp.buf.references, {})
+M('n', '<leader>cr', vim.lsp.buf.rename, {})
 
 -- Copy file paths
 M("n", "<leader>xp", function()
@@ -45,4 +48,6 @@ M('n', '<leader>d', toggle_diagnostics_virtual_text, { desc = "Toggle diagnostic
 -- LSP configs
 M("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover doc"})
 M("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "Hover doc"})
-
+M("n", "L", "<cmd>bnext<cr>", {})
+M("n", "H", "<cmd>bprev<cr>", {})
+M("n", "<leader>bd", "<cmd>bdelete<cr>", {})
