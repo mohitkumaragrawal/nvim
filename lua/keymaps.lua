@@ -42,3 +42,7 @@ end
 
 M('n', '<leader>d', toggle_diagnostics_virtual_text, { desc = "Toggle diagnostics" })
 
+-- LSP configs
+M("n", "K", function() vim.lsp.buf.hover() end, { desc = "Hover doc"})
+M("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "Hover doc"})
+
