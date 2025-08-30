@@ -51,3 +51,6 @@ M("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "Hover doc"})
 M("n", "L", "<cmd>bnext<cr>", {})
 M("n", "H", "<cmd>bprev<cr>", {})
 M("n", "<leader>bd", "<cmd>bdelete<cr>", {})
+
+M("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+

@@ -72,6 +72,7 @@ return {
       local api = require("nvim-tree.api")
       local M= vim.keymap.set
       api.config.mappings.default_on_attach(bufnr)
+      vim.keymap.del('n', '<C-K>', opts)
       -- function for left to assign to keybindings
       local lefty = function()
         local node_at_cursor = api.tree.get_node_under_cursor()
@@ -91,13 +92,8 @@ return {
           api.node.open.edit()
         end
       end
-      M("n", "h", lefty, opts)
-      M("n", "<Left>", lefty, opts)
-      M("n", "<Right>", righty, opts)
-      M("n", "l", righty, opts)
 
-      -- live grep for a directory
-      M("n", "<leader>/", function()
+      local live_grep_dir = function ()
         local node = api.tree.get_node_under_cursor()
         local fzf_lua = require('fzf-lua')
 
@@ -113,7 +109,18 @@ return {
             cwd = vim.fn.fnamemodify(node.absolute_path, ':h'),
           })
         end
-      end, opts)
+      end
+
+
+      M("n", "h", lefty, opts)
+      M("n", "<Left>", lefty, opts)
+      M("n", "<Right>", righty, opts)
+      M("n", "l", righty, opts)
+
+      -- live grep for a directory
+      M("n", "<leader>/", live_grep_dir, opts)
+      M("n", "<leader>fr", live_grep_dir, opts)
+      M("n", "K", api.node.show_info_popup, opts)
     end,
   },
   keys = {
