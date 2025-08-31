@@ -27,8 +27,8 @@ return {
       end
 
       -- Navigation
-      map('n', '<leader>gn', function() gs.nav_hunk('next') end, 'Next hunk')
-      map('n', '<leader>gp', function() gs.nav_hunk('prev') end, 'Prev hunk')
+      map('n', 'gn', function() gs.nav_hunk('nex') end, 'Next hunk')
+      map('n', 'gp', function() gs.nav_hunk('prev') end, 'Prev hunk')
 
       -- Actions on hunks
       map('n', '<leader>gr', gs.reset_hunk, 'Reset hunk')

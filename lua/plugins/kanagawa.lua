@@ -40,7 +40,8 @@ return {
         PmenuThumb = { bg = "#C0A36E" },
         BlinkCmpMenuBorder = { fg = "", bg = "" },
         CursorLineNr = { fg = colors.palette.sakuraPink, bg = "NONE" },
-        IblIndent = { fg = colors.palette.sumiInk4, bg = "NONE" },
+        IblIndent = { fg = colors.palette.sakuraPink, bg = "NONE" },
+        IblWhitespace = { fg = colors.palette.sakuraPink, bg = "NONE" },
       }
     end,
   },
