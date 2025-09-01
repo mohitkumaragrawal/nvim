@@ -34,7 +34,6 @@ return {
             codelenses = {
               generate = false
             },
-            verboseOutput = true
           }
         }
       })
