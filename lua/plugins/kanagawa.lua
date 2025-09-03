@@ -1,7 +1,7 @@
 return {
   "rebelot/kanagawa.nvim",
   opts = {
-    compile = true,
+    transparent = true,
     colors = {
       theme = {
         all = {
@@ -40,8 +40,9 @@ return {
         PmenuThumb = { bg = "#C0A36E" },
         BlinkCmpMenuBorder = { fg = "", bg = "" },
         CursorLineNr = { fg = colors.palette.sakuraPink, bg = "NONE" },
-        IblIndent = { fg = colors.palette.sakuraPink, bg = "NONE" },
-        IblWhitespace = { fg = colors.palette.sakuraPink, bg = "NONE" },
+        IblIndent = { fg = colors.palette.sumiInk5, bg = "NONE" },
+        IblWhitespace = { fg = colors.palette.sumiInk5, bg = "NONE" },
+        -- Visual = { fg = "#ffffff", bg = colors.palette.autumnRed },
       }
     end,
   },

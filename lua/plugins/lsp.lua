@@ -18,8 +18,37 @@ return {
     lazy = false,
     config = function()
       require('lspconfig').gopls.setup({
+        cmd = {'gopls', '-remote=auto'},
         settings = {
           gopls = {
+            -- Reduce memory usage
+            analyses = {
+              unusedparams = true,
+              staticcheck = true,
+            },
+            codelenses = {
+              gc_details = false, -- Disable gc_details codelens
+              generate = false,   -- Disable generate codelens
+              regenerate_cgo = false,
+              tidy = false,
+              upgrade_dependency = false,
+              vendor = false,
+            },
+            hints = {
+              assignVariableTypes = false,
+              compositeLiteralFields = false,
+              compositeLiteralTypes = false,
+              constantValues = false,
+              functionTypeParameters = false,
+              parameterNames = false,
+              rangeVariableTypes = false,
+            },
+            -- Experimental settings to reduce memory
+            experimentalPostfixCompletions = false,
+            experimentalWorkspaceModule = false,
+            gofumpt = false,
+            usePlaceholders = false,
+            completeFunctionCalls = false,
             directoryFilters = {
               "-polaris/.buildenv",
               "-polaris/.cache",
@@ -29,10 +58,12 @@ return {
               "-polaris/src/bazel-bin",
               "-polaris/src/bazel-out",
               "-polaris/src/bazel-src",
-              "-polaris/src/bazel-testlogs"
-            },
-            codelenses = {
-              generate = false
+              "-polaris/src/bazel-testlogs",
+              "-**/node_modules",
+              "-**/vendor",
+              "-**/.git",
+              "-**/build",
+              "-**/dist",
             },
           }
         }
