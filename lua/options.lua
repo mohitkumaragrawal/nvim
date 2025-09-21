@@ -22,3 +22,6 @@ vim.o.timeoutlen = 500
 vim.o.numberwidth = 4
 vim.o.signcolumn = "yes"
 vim.o.winborder = "single"
+
+vim.o.secure = true
+vim.o.exrc = true
