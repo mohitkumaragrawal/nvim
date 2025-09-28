@@ -46,6 +46,7 @@ return {
 				IblIndent = { fg = colors.palette.sumiInk4, bg = "NONE" },
 				IblWhitespace = { fg = colors.palette.sumiInk4, bg = "NONE" },
 				IblScope = { fg = colors.palette.sumiInk5, bg = "NONE" },
+        
 			}
 		end,
 	},

@@ -21,8 +21,11 @@ M("n", "J", "mzJ`z", { desc = "Merge bottom line" })
 M("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true, desc = "Scroll up" })
 M("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Scroll down" })
 M("n", "<leader>bd", "<cmd>bdelete<cr>", { noremap = true, desc = "Close Buffer" })
+
 M("n", "<esc><esc>", ":noh<CR>", { silent = true, nowait = true })
 M("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
+M('n', 'j', 'gj', { desc = "Move down" })
+M('n', 'k', 'gk', { desc = "Move down" })
 
 M("n", "gd", vim.lsp.buf.definition, {})
 M("n", "gr", vim.lsp.buf.references, {})
@@ -85,3 +88,4 @@ M("n", "<leader>du", '<cmd>lua require("dapui").toggle()<cr>', { desc = "DAP: To
 M("n", "<leader>fs", "<cmd>FormatOnSaveToggle<cr>", { desc = "Toggle format on save" })
 
 
+M({"n", "v"}, "<leader>ac", "<CMD>Augment chat<CR>", { desc = "Augment chat" })
