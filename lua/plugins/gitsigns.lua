@@ -27,7 +27,7 @@ return {
       end
 
       -- Navigation
-      map('n', 'gn', function() gs.nav_hunk('nex') end, 'Next hunk')
+      map('n', 'gn', function() gs.nav_hunk('next') end, 'Next hunk')
       map('n', 'gp', function() gs.nav_hunk('prev') end, 'Prev hunk')
 
       -- Actions on hunks
