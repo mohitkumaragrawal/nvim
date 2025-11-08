@@ -20,7 +20,6 @@ M("n", "<C-a>", 'mzggVG"+y`zzz', { desc = "Copy whole file" })
 M("n", "J", "mzJ`z", { desc = "Merge bottom line" })
 M("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true, desc = "Scroll up" })
 M("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Scroll down" })
-M("n", "<leader>bd", "<cmd>bdelete<cr>", { noremap = true, desc = "Close Buffer" })
 
 M("n", "<esc><esc>", ":noh<CR>", { silent = true, nowait = true })
 M("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
@@ -57,7 +56,6 @@ end, { desc = "Hover doc" })
 M("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "Hover doc" })
 M("n", "L", "<cmd>bnext<cr>", {})
 M("n", "H", "<cmd>bprev<cr>", {})
-M("n", "<leader>bd", "<cmd>bdelete<cr>", {})
 
 M("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
@@ -89,3 +87,6 @@ M("n", "<leader>fs", "<cmd>FormatOnSaveToggle<cr>", { desc = "Toggle format on s
 
 
 M({"n", "v"}, "<leader>ac", "<CMD>Augment chat<CR>", { desc = "Augment chat" })
+
+M("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<CR>")
+
