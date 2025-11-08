@@ -1,24 +1,25 @@
-require('options')
-require('keymaps')
+require("options")
+require("keymaps")
 
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+require("integrations.neovide")
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.diagnostic.config {
-  virtual_text = true
-}
+vim.diagnostic.config({
+	virtual_text = true,
+})
 require("lazy").setup("plugins")
 -- status
 
-vim.cmd "colorscheme kanagawa"
-
+vim.cmd("colorscheme kanagawa")
