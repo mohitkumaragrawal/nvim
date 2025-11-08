@@ -54,34 +54,32 @@ end, { desc = "Hover doc" })
 M("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "Hover doc" })
 M("n", "L", "<cmd>bnext<cr>", {})
 M("n", "H", "<cmd>bprev<cr>", {})
-M("n", "<leader>bd", "<cmd>bdelete<cr>", {})
+-- M("n", "<leader>bd", "<cmd>bdelete<cr>", {})
 
 M("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- DAP
-M("n", "<F5>", '<cmd>lua require("dap").continue()<cr>', { desc = "DAP: Continue" })
-M("n", "<F6>", '<cmd>lua require("dap").terminate()<cr>', { desc = "DAP: Terminate" })
-M("n", "<F10>", '<cmd>lua require("dap").step_over()<cr>', { desc = "DAP: Step Over" })
-M("n", "<F11>", '<cmd>lua require("dap").step_into()<cr>', { desc = "DAP: Step Into" })
-M("n", "<F12>", '<cmd>lua require("dap").step_out()<cr>', { desc = "DAP: Step Out" })
-M("n", "<leader>b", '<cmd>lua require("dap").toggle_breakpoint()<cr>', { desc = "DAP: Toggle Breakpoint" })
-M(
-	"n",
-	"<leader>B",
-	'<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>',
-	{ desc = "DAP: Set Conditional Breakpoint" }
-)
-M(
-	"n",
-	"<leader>lp",
-	'<cmd>lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<cr>',
-	{ desc = "DAP: Set Logpoint" }
-)
-M("n", "<leader>dr", '<cmd>lua require("dap").repl.open()<cr>', { desc = "DAP: Open REPL" })
-M("n", "<leader>dl", '<cmd>lua require("dap").run_last()<cr>', { desc = "DAP: Run Last" })
-M("n", "<leader>du", '<cmd>lua require("dapui").toggle()<cr>', { desc = "DAP: Toggle UI" })
+-- M("n", "<F5>", '<cmd>lua require("dap").continue()<cr>', { desc = "DAP: Continue" })
+-- M("n", "<F6>", '<cmd>lua require("dap").terminate()<cr>', { desc = "DAP: Terminate" })
+-- M("n", "<F10>", '<cmd>lua require("dap").step_over()<cr>', { desc = "DAP: Step Over" })
+-- M("n", "<F11>", '<cmd>lua require("dap").step_into()<cr>', { desc = "DAP: Step Into" })
+-- M("n", "<F12>", '<cmd>lua require("dap").step_out()<cr>', { desc = "DAP: Step Out" })
+-- M("n", "<leader>b", '<cmd>lua require("dap").toggle_breakpoint()<cr>', { desc = "DAP: Toggle Breakpoint" })
+-- M(
+-- 	"n",
+-- 	"<leader>B",
+-- 	'<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>',
+-- 	{ desc = "DAP: Set Conditional Breakpoint" }
+-- )
+-- M(
+-- 	"n",
+-- 	"<leader>lp",
+-- 	'<cmd>lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<cr>',
+-- 	{ desc = "DAP: Set Logpoint" }
+-- )
+-- M("n", "<leader>dr", '<cmd>lua require("dap").repl.open()<cr>', { desc = "DAP: Open REPL" })
+-- M("n", "<leader>dl", '<cmd>lua require("dap").run_last()<cr>', { desc = "DAP: Run Last" })
+-- M("n", "<leader>du", '<cmd>lua require("dapui").toggle()<cr>', { desc = "DAP: Toggle UI" })
 
--- Toggle format on save
-M("n", "<leader>fs", "<cmd>FormatOnSaveToggle<cr>", { desc = "Toggle format on save" })
-
-
+-- -- Toggle format on save
+-- M("n", "<leader>fs", "<cmd>FormatOnSaveToggle<cr>", { desc = "Toggle format on save" })
