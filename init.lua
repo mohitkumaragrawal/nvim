@@ -21,5 +21,3 @@ vim.diagnostic.config({
 })
 require("lazy").setup("plugins")
 -- status
-
-vim.cmd("colorscheme kanagawa")

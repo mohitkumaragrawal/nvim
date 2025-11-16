@@ -1,42 +1,44 @@
-local winbar_config = {
-	lualine_a = {},
-	lualine_b = {
-		{
-			"filetype",
-			colored = false, -- Displays filetype icon in color if set to true
-			icon_only = true, -- Display only an icon for filetype
-		},
-	},
-	lualine_c = {
-		{
-			"filename",
-			symbols = {
-				modified = "", -- Text to show when the file is modified.
-				readonly = "", -- Text to show when the file is non-modifiable or readonly.
-				unnamed = "", -- Text to show for unnamed buffers.
-				newfile = "+", -- Text to show for new created file before first write
+local function generate_winbar_config()
+	return {
+		lualine_a = {},
+		lualine_b = {
+			{
+				"filetype",
+				colored = false, -- Displays filetype icon in color if set to true
+				icon_only = true, -- Display only an icon for filetype
 			},
-			cond = function()
-				-- Only show this 'filename' component if the filetype is NOT 'oil'
-				return vim.bo.filetype ~= "oil"
-			end,
 		},
-		{
-			function()
-				if vim.bo.filetype == "oil" then
-					return require("oil").get_current_dir(0)
-				end
-				return ""
-			end,
+		lualine_c = {
+			{
+				"filename",
+				symbols = {
+					modified = "", -- Text to show when the file is modified.
+					readonly = "", -- Text to show when the file is non-modifiable or readonly.
+					unnamed = " ", -- Text to show for unnamed buffers.
+					newfile = "+", -- Text to show for new created file before first write
+				},
+				cond = function()
+					-- Only show this 'filename' component if the filetype is NOT 'oil'
+					return vim.bo.filetype ~= "oil"
+				end,
+			},
+			{
+				function()
+					if vim.bo.filetype == "oil" then
+						return require("oil").get_current_dir(0)
+					end
+					return ""
+				end,
+			},
 		},
-	},
-	lualine_y = {},
-	lualine_z = {},
-}
+		lualine_y = {},
+		lualine_z = {},
+	}
+end
 
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons", "rebelot/kanagawa.nvim" },
 	config = function()
 		require("lualine").setup({
 			options = {
@@ -67,16 +69,8 @@ return {
 				lualine_y = { "tabs" },
 				lualine_z = { "location" },
 			},
-			winbar = winbar_config,
-			-- tabline = {
-			-- 	lualine_a = {},
-			-- 	lualine_b = { "branch" },
-			-- 	lualine_c = {},
-			-- 	lualine_x = {},
-			-- 	lualine_y = {},
-			-- 	lualine_z = { "tabs" },
-			-- },
-			inactive_winbar = winbar_config,
+			winbar = generate_winbar_config(),
+			inactive_winbar = generate_winbar_config(),
 		})
 	end,
 }

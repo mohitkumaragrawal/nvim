@@ -85,3 +85,9 @@ M("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- M({"n", "v"}, "<leader>ac", "<CMD>Augment chat<CR>", { desc = "Augment chat" })
 
 M("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<CR>")
+
+-- Tabs
+M("n", "<leader>tt", "<cmd>tabnew<cr>", { desc = "New tab" })
+M("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Close tab" })
+M("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "Next tab" })
+M("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
