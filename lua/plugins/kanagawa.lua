@@ -21,11 +21,6 @@ return {
 			return {
 				VertSplit = { fg = colors.palette.oniViolet },
 				WinSeparator = { fg = colors.palette.oniViolet },
-				StatusLine = {
-					fg = colors.palette.sumiInk5,
-					bg = colors.palette.oniViolet,
-					bold = true,
-				},
 				NormalFloat = { bg = "none" },
 				FloatTitle = { bg = "none" },
 				FloatBorder = { bg = "NONE", fg = colors.palette.oniViolet },
@@ -46,7 +41,6 @@ return {
 				IblIndent = { fg = colors.palette.sumiInk4, bg = "NONE" },
 				IblWhitespace = { fg = colors.palette.sumiInk4, bg = "NONE" },
 				IblScope = { fg = colors.palette.sumiInk5, bg = "NONE" },
-        
 			}
 		end,
 	},

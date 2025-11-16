@@ -23,8 +23,8 @@ M("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Scroll down"
 
 M("n", "<esc><esc>", ":noh<CR>", { silent = true, nowait = true })
 M("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
-M('n', 'j', 'gj', { desc = "Move down" })
-M('n', 'k', 'gk', { desc = "Move down" })
+M("n", "j", "gj", { desc = "Move down" })
+M("n", "k", "gk", { desc = "Move down" })
 
 M("n", "gd", vim.lsp.buf.definition, {})
 M("n", "gr", vim.lsp.buf.references, {})
@@ -85,6 +85,3 @@ M("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- M({"n", "v"}, "<leader>ac", "<CMD>Augment chat<CR>", { desc = "Augment chat" })
 
 M("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<CR>")
-
--- Toggle format on save
-M("n", "<leader>fs", "<cmd>FormatOnSaveToggle<cr>", { desc = "Toggle format on save" })

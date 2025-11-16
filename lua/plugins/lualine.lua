@@ -1,0 +1,82 @@
+local winbar_config = {
+	lualine_a = {},
+	lualine_b = {
+		{
+			"filetype",
+			colored = false, -- Displays filetype icon in color if set to true
+			icon_only = true, -- Display only an icon for filetype
+		},
+	},
+	lualine_c = {
+		{
+			"filename",
+			symbols = {
+				modified = "", -- Text to show when the file is modified.
+				readonly = "", -- Text to show when the file is non-modifiable or readonly.
+				unnamed = "", -- Text to show for unnamed buffers.
+				newfile = "+", -- Text to show for new created file before first write
+			},
+			cond = function()
+				-- Only show this 'filename' component if the filetype is NOT 'oil'
+				return vim.bo.filetype ~= "oil"
+			end,
+		},
+		{
+			function()
+				if vim.bo.filetype == "oil" then
+					return require("oil").get_current_dir(0)
+				end
+				return ""
+			end,
+		},
+	},
+	lualine_y = {},
+	lualine_z = {},
+}
+
+return {
+	"nvim-lualine/lualine.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	config = function()
+		require("lualine").setup({
+			options = {
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
+				globalstatus = true,
+				disabled_filetypes = {
+					winbar = {
+						"NvimTree",
+					},
+				},
+			},
+			sections = {
+				lualine_a = { {
+					"mode",
+					fmt = function(str)
+						return str:sub(1, 1)
+					end,
+				} },
+				lualine_b = { {
+					"branch",
+					fmt = function(str)
+						return str:sub(1, 10)
+					end,
+				} },
+				lualine_c = { { "filename", path = 1 } },
+				lualine_x = {},
+				lualine_y = { "tabs" },
+				lualine_z = { "location" },
+			},
+			winbar = winbar_config,
+			-- tabline = {
+			-- 	lualine_a = {},
+			-- 	lualine_b = { "branch" },
+			-- 	lualine_c = {},
+			-- 	lualine_x = {},
+			-- 	lualine_y = {},
+			-- 	lualine_z = { "tabs" },
+			-- },
+			inactive_winbar = winbar_config,
+		})
+	end,
+}
