@@ -1,9 +1,5 @@
 local M = vim.keymap.set
 
--- Basic
-M("n", "<leader>nr", "<cmd>source %<cr>", { desc = "Source current buffer" })
-M("i", "kj", "<esc>")
-
 M("n", "<leader>|", "<cmd>vsplit<cr>", { desc = "Split window vertically" })
 M("n", "<leader>-", "<cmd>split<cr>", { desc = "Split window horizontally" })
 M("n", "<C-h>", "<C-w>h", { desc = "Move to left window" })
@@ -16,7 +12,7 @@ M("n", "<C-Down>", ":resize -2<CR>", { noremap = true, silent = true, desc = "De
 M("n", "<C-Left>", ":vertical resize -2<CR>", { noremap = true, silent = true, desc = "Increase width" })
 M("n", "<C-Right>", ":vertical resize +2<CR>", { noremap = true, silent = true, desc = "Decrease width" })
 M("v", "<C-c>", '"+y', { desc = "Copy to system clipboard" })
-M("n", "<C-a>", 'mzggVG"+y`zzz', { desc = "Copy whole file" })
+-- M("n", "<C-a>", 'mzggVG"+y`zzz', { desc = "Copy whole file" })
 M("n", "J", "mzJ`z", { desc = "Merge bottom line" })
 M("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true, desc = "Scroll up" })
 M("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true, desc = "Scroll down" })
@@ -89,5 +85,30 @@ M("n", "<leader>bd", ":bp<bar>sp<bar>bn<bar>bd<CR>")
 -- Tabs
 M("n", "<leader>tt", "<cmd>tabnew<cr>", { desc = "New tab" })
 M("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Close tab" })
-M("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "Next tab" })
-M("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+
+M("n", "<leader>1", "1gt", { desc = "Go to tab 1" })
+M("n", "<leader>2", "2gt", { desc = "Go to tab 2" })
+M("n", "<leader>3", "3gt", { desc = "Go to tab 3" })
+M("n", "<leader>4", "4gt", { desc = "Go to tab 4" })
+M("n", "<leader>5", "5gt", { desc = "Go to tab 5" })
+M("n", "<leader>6", "6gt", { desc = "Go to tab 6" })
+M("n", "<leader>7", "7gt", { desc = "Go to tab 7" })
+M("n", "<leader>8", "8gt", { desc = "Go to tab 8" })
+M("n", "<leader>9", "9gt", { desc = "Go to tab 9" })
+M("n", "<leader>0", "10gt", { desc = "Go to tab 10" })
+M("n", "<leader>$", function()
+	vim.ui.input({ prompt = "Enter Tab Name: " }, function(input)
+		-- If the user provided input (didn't cancel), run the command
+		if input then
+			vim.cmd("LualineRenameTab " .. input)
+		end
+	end)
+end, { desc = "Rename tab" })
+
+M("n", "[t", ":tabprevious<CR>", { desc = "Previous tab" })
+M("n", "]t", ":tabnext<CR>", { desc = "Next tab" })
+
+-- Terminals
+
+-- escape from terminal mode
+M("t", "<C-Space>", "<C-\\><C-n>", { desc = "Escape terminal mode" })

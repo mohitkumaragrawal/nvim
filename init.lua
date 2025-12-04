@@ -20,4 +20,10 @@ vim.diagnostic.config({
 	virtual_text = true,
 })
 require("lazy").setup("plugins")
+
+vim.filetype.add({
+	extension = {
+		mdx = "markdown",
+	},
+})
 -- status

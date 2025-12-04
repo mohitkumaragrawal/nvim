@@ -32,7 +32,11 @@ local function generate_winbar_config()
 			},
 		},
 		lualine_y = {},
-		lualine_z = {},
+		lualine_z = {
+			{
+				"location",
+			},
+		},
 	}
 end
 
@@ -50,6 +54,7 @@ return {
 						"NvimTree",
 					},
 				},
+				always_show_tabline = false,
 			},
 			sections = {
 				lualine_a = { {
@@ -66,8 +71,8 @@ return {
 				} },
 				lualine_c = { { "filename", path = 1 } },
 				lualine_x = {},
-				lualine_y = { "tabs" },
-				lualine_z = { "location" },
+				lualine_y = {},
+				lualine_z = { { "tabs", mode = 2 } },
 			},
 			winbar = generate_winbar_config(),
 			inactive_winbar = generate_winbar_config(),
