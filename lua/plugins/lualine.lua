@@ -76,6 +76,18 @@ return {
 			},
 			winbar = generate_winbar_config(),
 			inactive_winbar = generate_winbar_config(),
+			tabline = {
+				lualine_a = {
+					{
+						"tabs",
+						mode = 2,
+						max_length = vim.o.columns / 2,
+						symbols = {
+							modified = "",
+						},
+					},
+				},
+			},
 		})
 	end,
 }
