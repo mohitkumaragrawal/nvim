@@ -54,7 +54,7 @@ return {
 						"NvimTree",
 					},
 				},
-				always_show_tabline = false,
+				always_show_tabline = true,
 			},
 			sections = {
 				lualine_a = { {
@@ -79,9 +79,10 @@ return {
 			tabline = {
 				lualine_a = {
 					{
-						"tabs",
-						mode = 2,
-						max_length = vim.o.columns / 2,
+						"buffers",
+						mode = 0,
+						icon_enabled = false,
+						max_length = vim.o.columns,
 						symbols = {
 							modified = "",
 						},

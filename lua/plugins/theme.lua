@@ -47,4 +47,5 @@ return {
 			vim.cmd.colorscheme("kanagawa")
 		end,
 	},
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 }
