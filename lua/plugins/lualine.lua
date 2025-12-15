@@ -81,11 +81,27 @@ return {
 					{
 						"buffers",
 						mode = 0,
-						icon_enabled = false,
-						max_length = vim.o.columns,
+						icons_enabled = false,
+						max_length = 1e3,
 						symbols = {
 							modified = "",
+							alternate_file = "",
 						},
+						buffers_color = {
+							-- Color for the current buffer you are looking at
+							active = { fg = "#C8C093", bg = "#2D4F67", gui = "bold" },
+
+							-- Color for other buffers in the background
+							inactive = { fg = "#727169", bg = "#16161D" },
+						},
+						fmt = function(name)
+							local max_len = 20 -- Truncate if name is longer than 20 chars
+							if #name > max_len then
+								-- Keep first 8 chars .. "..." .. last 9 chars
+								return string.sub(name, 1, 8) .. "..." .. string.sub(name, -9)
+							end
+							return name
+						end,
 					},
 				},
 			},
