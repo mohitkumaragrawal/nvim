@@ -87,13 +87,6 @@ return {
 							modified = "",
 							alternate_file = "",
 						},
-						buffers_color = {
-							-- Color for the current buffer you are looking at
-							active = { fg = "#C8C093", bg = "#2D4F67", gui = "bold" },
-
-							-- Color for other buffers in the background
-							inactive = { fg = "#727169", bg = "#16161D" },
-						},
 						fmt = function(name)
 							local max_len = 20 -- Truncate if name is longer than 20 chars
 							if #name > max_len then

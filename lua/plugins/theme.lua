@@ -42,10 +42,18 @@ return {
 		},
 		lazy = false,
 		priority = 1000,
+		-- config = function(_, opts)
+		-- 	require("kanagawa").setup(opts)
+		-- 	vim.cmd.colorscheme("kanagawa")
+		-- end,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
 		config = function(_, opts)
-			require("kanagawa").setup(opts)
-			vim.cmd.colorscheme("kanagawa")
+			require("catppuccin").setup(opts)
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 }

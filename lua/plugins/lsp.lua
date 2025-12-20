@@ -41,7 +41,7 @@ local configure_cdm_scala_sbt = function()
 	-- vim.lsp.config["metals"] = metals_opts
 	-- vim.lsp.enable("metals")
 
-	require("lspconfig").metals.setup(metals_opts)
+	-- require("lspconfig").metals.setup(metals_opts)
 
 	vim.api.nvim_create_autocmd("BufWritePost", {
 		pattern = "*.scala",
