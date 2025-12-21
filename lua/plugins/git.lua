@@ -39,7 +39,7 @@ return {
 
 				-- Actions on hunks
 				map("n", "<leader>gr", gs.reset_hunk, "Reset hunk")
-				map("n", "<leader>gS", gs.stage_buffer, "Stage buffer")
+				-- map("n", "<leader>gS", gs.stage_buffer, "Stage buffer")
 				map("n", "<leader>gR", gs.reset_buffer, "Reset buffer")
 
 				-- Blame & Diff

@@ -22,8 +22,8 @@ M("n", "<C-s>", "<cmd>w<cr>", { desc = "Save file" })
 M("n", "j", "gj", { desc = "Move down" })
 M("n", "k", "gk", { desc = "Move down" })
 
-M("n", "gd", vim.lsp.buf.definition, {})
-M("n", "gr", vim.lsp.buf.references, {})
+-- M("n", "gd", vim.lsp.buf.definition, {})
+-- M("n", "gr", vim.lsp.buf.references, {})
 M("n", "<leader>cr", vim.lsp.buf.rename, {})
 
 -- Copy file paths
