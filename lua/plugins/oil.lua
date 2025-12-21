@@ -187,32 +187,36 @@ return {
 				function()
 					local path = require("oil").get_current_dir(0)
 					local entry = require("oil").get_cursor_entry()
+					local cwd = path
 					if entry and entry.type == "directory" then
-						local full_path = path .. entry.parsed_name
-						require("fzf-lua").live_grep({ cwd = full_path })
-					else
-						require("fzf-lua").live_grep({ cwd = path })
+						cwd = path .. entry.parsed_name
 					end
+					Snacks.picker.grep({ cwd = cwd })
 				end,
 				mode = "n",
 				nowait = true,
-				desc = "Fzf live grep",
+				desc = "Snacks grep",
 			},
 			["gd"] = {
 				function()
-					require("fzf-lua").fzf_exec("fd --type d --hidden --follow --exclude .git", {
-						prompt = "Oil Change Dir> ",
-						preview = "ls -oha --color=always {-1}",
-						actions = {
-							["default"] = function(selected)
-								if selected and selected[1] then
-									require("oil").open(selected[1])
-								end
-							end,
-						},
+					Snacks.picker.pick({
+						finder = "proc",
+						cmd = "fd",
+						args = { "--type", "d", "--hidden", "--follow", "--exclude", ".git" },
+						transform = function(item)
+							item.file = item.text
+							item.dir = true
+						end,
+						confirm = function(picker, item)
+							picker:close()
+							if item then
+								require("oil").open(item.text)
+							end
+						end,
+						title = "Oil Change Dir",
 					})
 				end,
-				desc = "Fzf switch directory",
+				desc = "Snacks switch directory",
 				mode = "n",
 			},
 		},
