@@ -214,6 +214,7 @@ return {
 							end
 						end,
 						title = "Oil Change Dir",
+						layout = "vscode",
 					})
 				end,
 				desc = "Snacks switch directory",
