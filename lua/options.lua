@@ -28,3 +28,5 @@ vim.o.exrc = true
 vim.o.conceallevel = 3
 vim.o.foldmethod = "syntax"
 vim.opt.diffopt:append("vertical")
+
+vim.o.linebreak = true

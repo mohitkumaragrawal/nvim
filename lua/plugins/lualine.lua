@@ -63,12 +63,17 @@ return {
 						return str:sub(1, 1)
 					end,
 				} },
-				lualine_b = { {
-					"branch",
-					fmt = function(str)
-						return str:sub(1, 10)
-					end,
-				} },
+				lualine_b = {
+					{
+						"branch",
+						fmt = function(str)
+							local max_len = 25
+							if #str > max_len then
+								return string.sub(str, 1, 18) .. ".." .. string.sub(str, -5)
+							end
+						end,
+					},
+				},
 				lualine_c = { { "filename", path = 1 } },
 				lualine_x = {},
 				lualine_y = {},
@@ -88,10 +93,9 @@ return {
 							alternate_file = "",
 						},
 						fmt = function(name)
-							local max_len = 20 -- Truncate if name is longer than 20 chars
+							local max_len = 30 -- Truncate if name is longer than 20 chars
 							if #name > max_len then
-								-- Keep first 8 chars .. "..." .. last 9 chars
-								return string.sub(name, 1, 8) .. "..." .. string.sub(name, -9)
+								return string.sub(name, 1, 13) .. ".." .. string.sub(name, -15)
 							end
 							return name
 						end,
