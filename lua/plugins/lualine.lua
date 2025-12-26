@@ -54,7 +54,7 @@ return {
 						"NvimTree",
 					},
 				},
-				always_show_tabline = true,
+				always_show_tabline = false,
 			},
 			sections = {
 				lualine_a = { {
@@ -103,5 +103,13 @@ return {
 				},
 			},
 		})
+
+		vim.api.nvim_create_user_command("ToggleTabline", function()
+			if vim.o.showtabline == 2 then
+				vim.o.showtabline = 0
+			else
+				vim.o.showtabline = 2
+			end
+		end, {})
 	end,
 }

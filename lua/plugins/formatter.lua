@@ -41,7 +41,7 @@ return {
 		},
 		init = function()
 			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-			vim.g.format_on_save = true
+			vim.g.format_on_save = false
 			vim.api.nvim_create_user_command("FormatOnSaveToggle", function()
 				vim.g.format_on_save = not vim.g.format_on_save
 				if vim.g.format_on_save then

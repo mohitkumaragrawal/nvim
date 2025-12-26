@@ -30,3 +30,4 @@ vim.o.foldmethod = "syntax"
 vim.opt.diffopt:append("vertical")
 
 vim.o.linebreak = true
+vim.o.showtabline = 0

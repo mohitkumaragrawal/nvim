@@ -1,6 +1,14 @@
 -- Define a file-local variable to track the popup window ID
 local detail_popup_id = nil
 
+local file_associations = {
+	pdf = "zathura",
+	jpg = "imv",
+	png = "imv",
+	mp4 = "mpv",
+	mp3 = "mpv",
+}
+
 return {
 	"stevearc/oil.nvim",
 	---@module 'oil'
@@ -8,6 +16,25 @@ return {
 	opts = {
 		columns = { "icon" },
 		keymaps = {
+			["gx"] = {
+				function()
+					local oil = require("oil")
+					local entry = oil.get_cursor_entry()
+					local dir = oil.get_current_dir()
+					if not entry or not dir then
+						return
+					end
+					local path = dir .. entry.name
+					local ext = entry.name:match("^.+%.(.+)$")
+					local opener = file_associations[ext]
+					if opener then
+						vim.fn.jobstart({ opener, path }, { detach = true })
+					else
+						vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+					end
+				end,
+				desc = "Open externally",
+			},
 			["<C-l>"] = false,
 			["<C-h>"] = false,
 			["L"] = "actions.refresh",
