@@ -21,6 +21,7 @@ return {
 			{ "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
 			{ "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
 			{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+			{ "<leader>fa", function() Snacks.picker() end, desc = "Choose Picker" },
 			-- git
 			-- { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
 			-- { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },

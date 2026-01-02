@@ -108,7 +108,19 @@ end, { desc = "Rename tab" })
 M("n", "[t", ":tabprevious<CR>", { desc = "Previous tab" })
 M("n", "]t", ":tabnext<CR>", { desc = "Next tab" })
 
--- Terminals
-
+local function term_move(key)
+	vim.b.last_terminal_mode = "t"
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n><C-w>" .. key, true, true, true), "n", false)
+end
 -- escape from terminal mode
 M("t", "<C-Space>", "<C-\\><C-n>", { desc = "Escape terminal mode" })
+
+M("t", "<C-h>", function() term_move("h") end, { desc = "Move left" })
+M("t", "<C-j>", function() term_move("j") end, { desc = "Move down" })
+M("t", "<C-k>", function() term_move("k") end, { desc = "Move up" })
+M("t", "<C-l>", function() term_move("l") end, { desc = "Move right" })
+
+-- keymaps for creating terminals similar to tmux splits, using Ctrl-b as prefix
+M("n", "<C-Space>|", "<cmd>vsplit | terminal<cr>i", { desc = "Vertical terminal" })
+M("n", "<C-Space>-", "<cmd>split | terminal<cr>i", { desc = "Horizontal terminal" })
+M("n", "<C-Space>t", "<cmd>terminal<cr>i", { desc = "Open terminal" })
