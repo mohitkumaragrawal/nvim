@@ -49,7 +49,9 @@ M("n", "K", function()
 	vim.lsp.buf.hover()
 end, { desc = "Hover doc" })
 
-M("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "Hover doc" })
+M("n", "<leader>ca", function ()
+  vim.lsp.buf.code_action()
+end, { desc = "Hover doc" })
 M("n", "L", "<cmd>bnext<cr>", {})
 M("n", "H", "<cmd>bprev<cr>", {})
 

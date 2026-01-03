@@ -111,7 +111,7 @@ return {
 		})
 
 		vim.api.nvim_create_user_command("ToggleTabline", function()
-			if vim.o.showtabline == 2 then
+			if vim.o.showtabline ~= 0 then
 				vim.o.showtabline = 0
 			else
 				vim.o.showtabline = 2
