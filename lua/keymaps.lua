@@ -52,8 +52,6 @@ end, { desc = "Hover doc" })
 M("n", "<leader>ca", function ()
   vim.lsp.buf.code_action()
 end, { desc = "Hover doc" })
-M("n", "L", "<cmd>bnext<cr>", {})
-M("n", "H", "<cmd>bprev<cr>", {})
 
 M("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 

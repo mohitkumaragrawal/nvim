@@ -87,35 +87,7 @@ return {
 			},
 			winbar = generate_winbar_config(),
 			inactive_winbar = generate_winbar_config(),
-			tabline = {
-				lualine_a = {
-					{
-						"buffers",
-						mode = 0,
-						icons_enabled = false,
-						max_length = 1e3,
-						symbols = {
-							modified = "",
-							alternate_file = "",
-						},
-						fmt = function(name)
-							local max_len = 30 -- Truncate if name is longer than 20 chars
-							if #name > max_len then
-								return string.sub(name, 1, 13) .. ".." .. string.sub(name, -15)
-							end
-							return name
-						end,
-					},
-				},
-			},
 		})
 
-		vim.api.nvim_create_user_command("ToggleTabline", function()
-			if vim.o.showtabline ~= 0 then
-				vim.o.showtabline = 0
-			else
-				vim.o.showtabline = 2
-			end
-		end, {})
 	end,
 }
