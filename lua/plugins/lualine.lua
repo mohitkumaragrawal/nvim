@@ -83,7 +83,7 @@ return {
           },
         },
 				lualine_y = {},
-				lualine_z = { { "tabs", mode = 2 } },
+				lualine_z = { { "tabs", mode = 0 } },
 			},
 			winbar = generate_winbar_config(),
 			inactive_winbar = generate_winbar_config(),
