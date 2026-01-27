@@ -4,7 +4,11 @@ return {
 		lazy = false,
 		priority = 20000,
 		opts = {
-			picker = {},
+			picker = {
+        main = {
+          file = false,
+        }
+      },
 			dashboard = {},
 		},
 		keys = {

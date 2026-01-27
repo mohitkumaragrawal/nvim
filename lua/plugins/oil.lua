@@ -5,6 +5,7 @@ local file_associations = {
 	pdf = "zathura",
 	jpg = "imv",
 	png = "imv",
+	jpeg = "imv",
 	mp4 = "mpv",
 	mp3 = "mpv",
 }

@@ -30,22 +30,35 @@ return {
 					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency,,
 					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
 					PmenuSbar = { bg = theme.ui.bg_m1 },
-					PmenuThumb = { bg = "#C0A36E" },
+					PmenuThumb = { bg = colors.palette.boatYellow2 },
 					BlinkCmpMenuBorder = { fg = "NONE", bg = "NONE" },
 					CursorLineNr = { fg = colors.palette.sakuraPink, bg = "NONE" },
-					CursorLine = { fg = "NONE", bg = colors.palette.sumiInk4 },
-					IblIndent = { fg = colors.palette.sumiInk4, bg = "NONE" },
-					IblWhitespace = { fg = colors.palette.sumiInk4, bg = "NONE" },
-					IblScope = { fg = colors.palette.sumiInk5, bg = "NONE" },
+					CursorLine = { fg = "NONE", bg = theme.ui.bg_p1 },
+					IblIndent = { fg = theme.ui.bg_p1, bg = "NONE" },
+					IblWhitespace = { fg = theme.ui.bg_p1, bg = "NONE" },
+					IblScope = { fg = theme.ui.bg_p2, bg = "NONE" },
 				}
 			end,
 		},
 		lazy = false,
 		priority = 1000,
-		-- config = function(_, opts)
-		-- 	require("kanagawa").setup(opts)
-		-- 	vim.cmd.colorscheme("kanagawa")
-		-- end,
+		config = function(_, opts)
+			require("kanagawa").setup(opts)
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "kanagawa-dragon",
+				callback = function()
+					vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+					local colors = require("kanagawa.colors").setup({ theme = "dragon" })
+					local theme = colors.theme
+					local c = require("kanagawa.lib.color")
+					local dark_cursor_line = c(theme.ui.bg_p1):blend("#000000", 0.7):to_hex()
+					vim.api.nvim_set_hl(0, "CursorLine", { bg = dark_cursor_line })
+					local dark_indent = c(theme.ui.bg_p1):blend("#000000", 0.5):to_hex()
+					vim.api.nvim_set_hl(0, "IblIndent", { fg = dark_indent })
+					vim.api.nvim_set_hl(0, "IblWhitespace", { fg = dark_indent })
+				end,
+			})
+		end,
 	},
 	{
 		"catppuccin/nvim",
