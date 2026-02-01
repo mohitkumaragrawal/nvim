@@ -58,6 +58,7 @@ return {
 					vim.api.nvim_set_hl(0, "IblWhitespace", { fg = dark_indent })
 				end,
 			})
+			vim.cmd.colorscheme("kanagawa-dragon")
 		end,
 	},
 	{
@@ -66,7 +67,7 @@ return {
 		priority = 1000,
 		config = function(_, opts)
 			require("catppuccin").setup(opts)
-			vim.cmd.colorscheme("catppuccin")
+			-- vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 }
